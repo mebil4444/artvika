@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
   <link rel="icon" href="assets/favicon.png">
+  <link rel="canonical" href="https://mebil4444.github.io/artvika/">
   <meta property="og:title" content="Studio Artvika — Workshops">
   <meta property="og:description" content="Paper flowers, stained glass painting, and ebru workshops in Norway.">
   <meta property="og:image" content="https://mebil4444.github.io/artvika/assets/hero.jpg">
@@ -44,6 +45,7 @@
 
     h1{font-size:56px;margin:12px 0}
     h2{font-size:30px;margin:0 0 18px;text-align:center}
+    h3{font-size:20px;margin:10px 0 8px}
     .kicker{color:var(--muted);font-size:14px;margin-bottom:8px;text-transform:uppercase;letter-spacing:.08em;text-align:center}
     p.lead{font-size:20px;color:#f5f5f5;margin-bottom:16px}
 
@@ -66,7 +68,7 @@
 <body>
 
   <!-- NAV -->
-  <nav class="nav">
+  <nav class="nav" aria-label="Primary">
     <div class="container nav-in">
       <a class="brand" href="#top">Studio Artvika</a>
       <div class="menu">
@@ -74,6 +76,7 @@
         <a href="#about">About</a>
         <a href="#gallery">Gallery</a>
         <a href="#contact" class="btn ghost">Contact</a>
+        <a href="https://www.instagram.com/artvika.no/" target="_blank" class="btn">Instagram</a>
       </div>
     </div>
   </nav>
@@ -93,17 +96,17 @@
       <h2>Pick Your Workshop</h2>
       <div class="grid g2">
         <article class="card workshop-card">
-          <img src="assets/paper.jpg" srcset="assets/paper.jpg 800w" sizes="100vw" alt="Paper flower bouquet">
+          <img src="assets/paper.jpg" alt="Paper flower bouquet">
           <h3>Paper Flower Workshop</h3>
           <p>Craft blooms that never fade. Shape, curl, and color premium crepe to build a bespoke bouquet — sustainable, joyful, and made by you.</p>
         </article>
         <article class="card workshop-card">
-          <img src="assets/glass.jpg" srcset="assets/glass.jpg 800w" sizes="100vw" alt="Stained glass art">
+          <img src="assets/glass.jpg" alt="Stained glass art">
           <h3>Stained Glass Painting</h3>
           <p>Design luminous motifs with rich glass paints. Learn line work, layering, and finishing to bring vibrant light and color into your space.</p>
         </article>
         <article class="card workshop-card">
-          <img src="assets/ebru.jpg" srcset="assets/ebru.jpg 800w" sizes="100vw" alt="Ebru marbling">
+          <img src="assets/ebru.jpg" alt="Ebru marbling">
           <h3>Traditional Water Marbling — Ebru</h3>
           <p>Guide pigments across water to create one-of-a-kind marbled patterns. Slow, meditative, and endlessly surprising.</p>
         </article>
@@ -114,7 +117,7 @@
   <!-- ABOUT -->
   <section id="about">
     <div class="container grid g2">
-      <div><img src="assets/about.jpg" srcset="assets/about.jpg 800w" sizes="100vw" alt="Paper flower detail"></div>
+      <div><img src="assets/about.jpg" alt="Paper flower detail"></div>
       <div class="card" style="display:flex;align-items:center">
         <p>A creative studio where community and craft meet. From paper flowers to stained glass and marbling, every workshop is a welcoming space to learn, make, and connect.</p>
       </div>
@@ -134,7 +137,7 @@
     </div>
   </section>
 
- <!-- CONTACT -->
+  <!-- CONTACT -->
 <section id="contact">
   <div class="container stack">
     <div class="kicker">Contact</div>
@@ -150,26 +153,28 @@
         </p>
         <p><strong>Phone</strong><br>—</p>
 
-        <!-- ✅ Formspree form – Studio Artvika -->
-        <form id="contactForm" action="https://formspree.io/f/artvika" method="POST" novalidate>
-          <label>
-            Name<br>
-            <input type="text" name="name" placeholder="Your name" required
-              style="width:100%;padding:10px;border-radius:8px;border:1px solid var(--line);margin:5px 0">
-          </label><br>
-          <label>
-            Email<br>
+        <!-- ✅ WORKING FORMSPREE FORM -->
+        <form id="contactForm" action="https://formspree.io/f/mjkazyzo" method="POST" novalidate>
+          <label style="display:block;text-align:left">Name<br>
+            <input name="name" placeholder="Your name" required
+              style="width:100%;padding:10px;border-radius:8px;border:1px solid var(--line);margin:6px 0">
+          </label>
+          <label style="display:block;text-align:left">Email<br>
             <input type="email" name="email" placeholder="you@example.com" required
-              style="width:100%;padding:10px;border-radius:8px;border:1px solid var(--line);margin:5px 0">
-          </label><br>
-          <label>
-            Message<br>
+              style="width:100%;padding:10px;border-radius:8px;border:1px solid var(--line);margin:6px 0">
+          </label>
+          <label style="display:block;text-align:left">Message<br>
             <textarea name="message" rows="4" placeholder="Hello..." required
-              style="width:100%;padding:10px;border-radius:8px;border:1px solid var(--line);margin:5px 0"></textarea>
-          </label><br>
+              style="width:100%;padding:10px;border-radius:8px;border:1px solid var(--line);margin:6px 0"></textarea>
+          </label>
           <button type="submit" class="btn inverse" id="sendBtn">Send</button>
-          <p id="formNote" style="font-size:14px;color:#6e6e6e;margin-top:6px"></p>
+          <p id="formNote" style="font-size:14px;color:#6e6e6e;margin-top:8px"></p>
         </form>
+
+        <!-- 🌸 Instagram Button -->
+        <a href="https://www.instagram.com/artvika.no/" target="_blank" class="btn" style="margin-top:12px;">
+          Follow us on Instagram
+        </a>
       </div>
     </div>
   </div>
@@ -207,27 +212,6 @@ form.addEventListener('submit', async (e)=>{
   }
 });
 </script>
-
-
-
-  <footer class="footer">
-    © 2025 Studio Artvika — All rights reserved.
-  </footer>
-
-  <script>
-    const form = document.getElementById('contactForm');
-    const note = document.getElementById('formNote');
-    form.addEventListener('submit', async (e)=>{
-      e.preventDefault();
-      note.textContent="Sending…";
-      const data = new FormData(form);
-      try{
-        const res=await fetch(form.action,{method:"POST",body:data,headers:{Accept:"application/json"}});
-        if(res.ok){note.style.color="#0b6f3a";note.textContent="Thanks! Your message was sent.";form.reset();}
-        else{note.style.color="#b0413e";note.textContent="Error — please try again.";}
-      }catch{note.style.color="#b0413e";note.textContent="Network error.";}
-    });
-  </script>
 
 </body>
 </html>
