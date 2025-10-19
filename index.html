@@ -135,23 +135,45 @@
   </section>
 
   <!-- CONTACT -->
-  <section id="contact">
-    <div class="container grid g2">
-      <div><img src="assets/hero.jpg" alt="Abstract art background"></div>
+<section id="contact">
+  <div class="container stack">
+    <div class="kicker">Contact</div>
+    <h2>Get in Touch</h2>
+    <div class="grid g2">
+      <div class="card" style="background:transparent;border:none;padding:0;box-shadow:none">
+        <img src="assets/hero.jpg" alt="Studio Artvika abstract background" loading="lazy"/>
+      </div>
       <div class="card" style="text-align:center">
         <p><strong>STUDIO ARTVIKA</strong><br>Gartnervingen 8B<br>2032 Maura / Norway</p>
-        <p><strong>Email</strong><br><a href="mailto:studioartvika7@gmail.com" class="btn ghost">studioartvika7@gmail.com</a></p>
+        <p><strong>Email</strong><br>
+          <a class="btn ghost" href="mailto:studioartvika7@gmail.com">studioartvika7@gmail.com</a>
+        </p>
         <p><strong>Phone</strong><br>—</p>
-        <form id="contactForm" action="https://formspree.io/f/xxxxxxxx" method="POST">
-          <input name="name" placeholder="Your name" required style="width:100%;padding:10px;border-radius:8px;border:1px solid var(--line);margin:5px 0"><br>
-          <input name="email" type="email" placeholder="you@example.com" required style="width:100%;padding:10px;border-radius:8px;border:1px solid var(--line);margin:5px 0"><br>
-          <textarea name="message" rows="4" placeholder="Hello..." required style="width:100%;padding:10px;border-radius:8px;border:1px solid var(--line);margin:5px 0"></textarea><br>
-          <button class="btn inverse" type="submit">Send</button>
-          <p id="formNote" style="font-size:14px;color:#6e6e6e;margin-top:6px"></p>
+
+        <!-- ✅ Formspree form – Studio Artvika -->
+        <form id="contactForm" action="https://formspree.io/f/artvika" method="POST">
+          <label>
+            Name<br>
+            <input type="text" name="name" placeholder="Your name" required
+              style="width:100%;padding:10px;border-radius:8px;border:1px solid var(--line);margin:5px 0">
+          </label><br>
+          <label>
+            Email<br>
+            <input type="email" name="email" placeholder="you@example.com" required
+              style="width:100%;padding:10px;border-radius:8px;border:1px solid var(--line);margin:5px 0">
+          </label><br>
+          <label>
+            Message<br>
+            <textarea name="message" rows="4" placeholder="Hello..." required
+              style="width:100%;padding:10px;border-radius:8px;border:1px solid var(--line);margin:5px 0"></textarea>
+          </label><br>
+          <button type="submit" class="btn inverse">Send</button>
         </form>
       </div>
     </div>
-  </section>
+  </div>
+</section>
+
 
   <footer class="footer">
     © 2025 Studio Artvika — All rights reserved.
