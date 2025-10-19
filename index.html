@@ -1,86 +1,257 @@
-<!-- CONTACT -->
-<section id="contact">
-  <div class="container stack">
-    <div class="kicker">Contact</div>
-    <h2>Get in Touch</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Studio Artvika — Workshops</title>
+  <meta name="description" content="Studio Artvika — paper flowers, stained glass painting, and ebru workshops in Norway." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="icon" href="assets/favicon.png">
+  <meta property="og:title" content="Studio Artvika — Workshops">
+  <meta property="og:description" content="Paper flowers, stained glass painting, and ebru workshops in Norway.">
+  <meta property="og:image" content="https://mebil4444.github.io/artvika/assets/hero.jpg">
+  <meta name="robots" content="index,follow">
+  <style>
+    :root{
+      --bg:#fbfaf8;--fg:#141414;--muted:#6e6e6e;--card:#fff;
+      --line:#ece7e3;--radius:18px;--shadow:0 6px 20px rgba(0,0,0,.06);
+      --max:1200px;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{
+      background:var(--bg);color:var(--fg);
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      line-height:1.55;scroll-behavior:smooth;
+    }
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block;border-radius:var(--radius)}
+    .container{max-width:var(--max);margin-inline:auto;padding:16px 20px}
 
-    <div class="grid g2">
-      <div class="card" style="background:transparent;border:none;padding:0;box-shadow:none">
-        <img src="assets/hero.jpg" alt="Abstract paint background" loading="lazy"/>
-      </div>
+    /* NAV */
+    .nav{position:sticky;top:0;background:rgba(251,250,248,.9);
+      backdrop-filter:saturate(120%) blur(8px);
+      border-bottom:1px solid var(--line);z-index:10}
+    .nav-in{display:flex;align-items:center;justify-content:space-between;gap:10px}
+    .brand{font-weight:800;letter-spacing:.2px}
+    .menu{display:flex;gap:12px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
 
-      <!-- CONTACT CARD (centered like screenshot) -->
-      <div class="card contact-card" style="text-align:center">
-        <p style="font-weight:800;letter-spacing:.02em;margin:0 0 2px">STUDIO ARTVIKA</p>
-        <p style="margin:0 0 10px">Gartnervingen 8B<br/>2032 Maura / Norway</p>
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;
+      padding:10px 22px;border-radius:999px;font-weight:600;cursor:pointer;
+      border:1px solid rgba(20,20,20,.12);background:#fff;color:#111;
+      box-shadow:var(--shadow);transition:all .18s ease}
+    .btn:hover{transform:translateY(-1px);box-shadow:0 8px 20px rgba(10,10,10,.1)}
+    .btn.inverse{background:#111;color:#fff}
+    .btn.ghost{background:transparent;border:1px solid var(--line);box-shadow:none}
 
-        <p style="font-weight:700;margin:10px 0 6px">Email</p>
-        <a class="btn ghost" href="mailto:studioartvika7@gmail.com"
-           style="display:inline-flex;min-width:260px;justify-content:center">studioartvika7@gmail.com</a>
+    /* TYPOGRAPHY */
+    h1{font-size:54px;line-height:1.1;margin:12px 0 8px;font-weight:800;letter-spacing:-.02em}
+    h2{font-size:30px;margin:0 0 18px;text-align:center}
+    h3{font-size:20px;margin:10px 0 8px}
+    .kicker{color:var(--muted);font-size:14px;margin-bottom:6px;text-align:center;text-transform:uppercase;letter-spacing:.08em}
 
-        <p style="font-weight:700;margin:16px 0 0">Phone</p>
-        <p style="margin:0 0 12px">—</p>
+    /* HERO */
+    .hero{display:flex;flex-direction:column;align-items:center;justify-content:center;
+      text-align:center;min-height:80vh;position:relative;border-radius:var(--radius);
+      overflow:hidden;color:#fff;padding:60px 16px}
+    .hero::before{content:"";position:absolute;inset:0;background:url('assets/hero.jpg') center/cover no-repeat}
+    .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.25))}
+    .hero>*{position:relative;z-index:1}
+    .pill{display:inline-block;background:rgba(255,255,255,.16);
+      backdrop-filter:saturate(130%) blur(6px);padding:6px 12px;border-radius:999px;
+      color:#fff;font-size:12px;border:1px solid rgba(255,255,255,.24)}
 
-        <!-- ✅ FORMSPREE (AJAX) -->
-        <form id="contactForm" action="https://formspree.io/f/xxxxxxxx" method="POST" novalidate>
-          <!-- Honeypot (botlar için görünmez) -->
-          <input type="text" name="_gotcha" style="display:none">
+    section{padding-block:60px;border-top:1px solid var(--line)}
+    .grid{display:grid;gap:20px}
+    .grid.g2{grid-template-columns:repeat(2,1fr)}
+    .card{background:var(--card);padding:18px;border:1px solid var(--line);
+      border-radius:var(--radius);box-shadow:var(--shadow)}
 
-          <label class="contact-label">Name</label>
-          <input class="field" required name="name" id="f_name" placeholder="Your name">
+    .footer{padding-block:30px;border-top:1px solid var(--line);color:#6e6e6e;font-size:14px;text-align:center}
+    @media (max-width:900px){
+      h1{font-size:42px} h2{font-size:26px}
+      section{padding-block:40px}
+      .grid.g2{grid-template-columns:1fr}
+      .container{padding:14px 16px}
+    }
+  </style>
+</head>
 
-          <label class="contact-label">Email</label>
-          <input class="field" required type="email" name="email" id="f_email" placeholder="you@example.com">
-
-          <label class="contact-label">Message</label>
-          <textarea class="field" required name="message" id="f_message" rows="5" placeholder="Hello..."></textarea>
-
-          <button id="sendBtn" class="btn inverse" type="submit" style="margin-top:6px">Send</button>
-          <div id="formNote" style="margin-top:10px;font-size:14px;color:#6e6e6e"></div>
-        </form>
+<body>
+  <!-- NAV -->
+  <nav class="nav" aria-label="Primary">
+    <div class="container nav-in">
+      <a class="brand" href="#top">Studio Artvika</a>
+      <div class="menu">
+        <a href="#workshops">Workshops</a>
+        <a href="#about">About</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contact" class="btn ghost">Contact</a>
+        <a href="https://www.instagram.com/artvika.no/" target="_blank" class="btn">Instagram</a>
       </div>
     </div>
-  </div>
-</section>
+  </nav>
 
-<!-- ↓↓↓ contact için ufak CSS takviyesi (istersen <style> bloğunun sonuna ekleyebilirsin) -->
-<style>
-  .contact-card .field{
-    width:100%;max-width:520px;margin:6px auto 12px;padding:12px 14px;
-    border:1px solid var(--line);border-radius:12px;font-size:15px
-  }
-  .contact-card .contact-label{display:block;margin:8px 0 6px;font-weight:600;text-align:center}
-  @media (max-width:640px){.contact-card .field{max-width:100%}}
-</style>
+  <!-- HERO -->
+  <header id="top" class="container hero" role="banner">
+    <span class="pill">STUDIO ARTVIKA</span>
+    <h1>Art Workshops Studio</h1>
+    <p style="font-size:20px;color:#f0f0f0;">Creativity that connects communities.</p>
+    <div style="margin-top:10px"><a class="btn primary" href="#workshops">Pick Your Workshop</a></div>
+  </header>
 
-<!-- ✅ AJAX ile Formspree (sayfadan ayrılmadan) -->
-<script>
-  const form = document.getElementById('contactForm');
-  const note = document.getElementById('formNote');
+  <!-- WORKSHOPS -->
+  <section id="workshops">
+    <div class="container" style="text-align:center">
+      <div class="kicker">Workshops</div>
+      <h2>Pick Your Workshop</h2>
+      <div class="grid g2" style="margin-top:10px">
+        <a href="#paper" style="text-decoration:none">
+          <article class="card">
+            <img src="assets/paper.jpg" alt="Paper flower bouquet"/>
+            <h3>Paper Flower Workshop</h3>
+            <p>Craft blooms that never fade. Shape, curl, and color premium crepe to build a bespoke bouquet — sustainable, joyful, and made entirely by you.</p>
+          </article>
+        </a>
+        <article class="card">
+          <img src="assets/glass.jpg" alt="Stained glass frame"/>
+          <h3>Stained Glass Painting</h3>
+          <p>Design luminous motifs with rich glass paints. Learn line work, layering, and finishing to bring vibrant light and color into your space.</p>
+        </article>
+      </div>
+    </div>
+  </section>
 
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    note.style.color = '#6e6e6e';
-    note.textContent = "Sending…";
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container grid g2">
+      <div class="card"><img src="assets/about.jpg" alt="Paper flower on craft background"></div>
+      <div class="card" style="display:flex;align-items:center;justify-content:center;text-align:left">
+        <p>A creative studio where community and craft meet. From paper flowers to stained glass and marbling, every workshop is a welcoming space to learn, make, and connect.</p>
+      </div>
+    </div>
+  </section>
 
-    const data = new FormData(form);
-    try {
-      const res = await fetch(form.action, {
-        method: 'POST',
-        body: data,
-        headers: { 'Accept': 'application/json' }
-      });
-      if (res.ok) {
-        note.style.color = '#0b6f3a';
-        note.textContent = "Thanks! Your message was sent successfully.";
-        form.reset();
-      } else {
-        const j = await res.json().catch(()=>null);
-        throw new Error(j && j.errors ? j.errors.map(x=>x.message).join(', ') : 'Failed to send');
+  <!-- GALLERY -->
+  <section id="gallery">
+    <div class="container" style="text-align:center">
+      <div class="kicker">Gallery</div>
+      <h2>Selected Works</h2>
+      <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px">
+        <img src="assets/gallery-1.jpg" alt="Gallery image 1"/>
+        <img src="assets/gallery-2.jpg" alt="Gallery image 2"/>
+        <img src="assets/gallery-3.jpg" alt="Gallery image 3"/>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAPER DETAIL -->
+  <section id="paper">
+    <div class="container grid g2" style="align-items:center">
+      <div class="card"><img src="assets/paper.jpg" alt="Paper flower"/></div>
+      <div class="card" style="text-align:left">
+        <h3>Paper Flower Workshop</h3>
+        <p>Learn petal shaping, curling, coloring, and bouquet assembly with premium crepe paper.</p>
+        <ul style="padding-left:20px;line-height:1.6">
+          <li>Duration: 2.5–3 hours</li>
+          <li>Group size: 6–10 participants</li>
+          <li>All materials included</li>
+          <li>Location: Maura / Oslo area</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container stack">
+      <div class="kicker">Contact</div>
+      <h2>Get in Touch</h2>
+
+      <div class="grid g2">
+        <div class="card" style="background:transparent;border:none;padding:0;box-shadow:none">
+          <img src="assets/hero.jpg" alt="Abstract paint background" loading="lazy"/>
+        </div>
+
+        <div class="card contact-card" style="text-align:center">
+          <p style="font-weight:800;margin-bottom:2px">STUDIO ARTVIKA</p>
+          <p style="margin:0 0 10px">Gartnervingen 8B<br/>2032 Maura / Norway</p>
+          <p style="font-weight:700;margin:10px 0 6px">Email</p>
+          <a class="btn ghost" href="mailto:studioartvika7@gmail.com"
+             style="display:inline-flex;min-width:260px;justify-content:center">studioartvika7@gmail.com</a>
+          <p style="font-weight:700;margin:16px 0 0">Phone</p>
+          <p style="margin:0 0 12px">—</p>
+
+          <!-- ✅ FORMSPREE -->
+          <form id="contactForm" action="https://formspree.io/f/xxxxxxxx" method="POST" novalidate>
+            <input type="text" name="_gotcha" style="display:none">
+
+            <label>Name</label>
+            <input class="field" required name="name" id="f_name" placeholder="Your name">
+
+            <label>Email</label>
+            <input class="field" required type="email" name="email" id="f_email" placeholder="you@example.com">
+
+            <label>Message</label>
+            <textarea class="field" required name="message" id="f_message" rows="5" placeholder="Hello..."></textarea>
+
+            <button id="sendBtn" class="btn inverse" type="submit" style="margin-top:6px">Send</button>
+            <div id="formNote" style="margin-top:10px;font-size:14px;color:#6e6e6e"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRIVACY -->
+  <section id="privacy">
+    <div class="container card" style="max-width:900px">
+      <h2 style="text-align:left">Privacy & Consent (KVKK/GDPR)</h2>
+      <p>We collect and process your name, email address, and message solely to respond to your inquiry and manage workshop bookings. Your data will not be sold or shared with third parties except service providers necessary to run our website and forms.</p>
+      <ul style="padding-left:18px">
+        <li><strong>Legal basis:</strong> your explicit consent and our legitimate interest in responding to inquiries.</li>
+        <li><strong>Retention:</strong> messages kept up to 12 months unless deletion requested.</li>
+        <li><strong>Your rights:</strong> access, correction, deletion, restriction, and withdrawal of consent.</li>
+        <li><strong>Contact:</strong> <a href="mailto:studioartvika7@gmail.com">studioartvika7@gmail.com</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <footer class="footer">
+    © <span id="year"></span> Studio Artvika — All rights reserved.
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // AJAX Formspree
+    const form = document.getElementById('contactForm');
+    const note = document.getElementById('formNote');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      note.style.color = '#6e6e6e';
+      note.textContent = "Sending…";
+      const data = new FormData(form);
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: data,
+          headers: { 'Accept': 'application/json' }
+        });
+        if (res.ok) {
+          note.style.color = '#0b6f3a';
+          note.textContent = "Thanks! Your message was sent successfully.";
+          form.reset();
+        } else {
+          throw new Error();
+        }
+      } catch {
+        note.style.color = '#b0413e';
+        note.textContent = "Failed to send. Please email us at studioartvika7@gmail.com.";
       }
-    } catch (err) {
-      note.style.color = '#b0413e';
-      note.textContent = "Failed to send. Please try again or email us at studioartvika7@gmail.com.";
-    }
-  });
-</script>
+    });
+  </script>
+</body>
+</html>
