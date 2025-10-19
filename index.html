@@ -206,18 +206,59 @@
         <div class="card" style="background:transparent;border:none;padding:0;box-shadow:none">
           <img src="assets/hero.jpg" alt="Abstract paint background" loading="lazy"/>
         </div>
-        <div class="card">
+
+        <div class="card" style="text-align:left">
           <p><strong>STUDIO ARTVIKA</strong><br/>Gartnervingen 8B<br/>2032 Maura / Norway</p>
-          <p><strong>Email</strong><br/><a class="btn ghost" href="mailto:studioartvika7@gmail.com">studioartvika7@gmail.com</a></p>
+
+          <p><strong>Email</strong><br/>
+            <a class="btn ghost" href="mailto:studioartvika7@gmail.com">studioartvika7@gmail.com</a>
+          </p>
+
           <p><strong>Phone</strong><br/>—</p>
 
-          <!-- ✅ FORMSPREE FORM -->
-          <form action="https://formspree.io/f/xxxxxxxx" method="POST">
-            <label>Name<br><input required name="name" placeholder="Your name" style="width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:12px"/></label><br>
-            <label>Email<br><input required type="email" name="email" placeholder="you@example.com" style="width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:12px"/></label><br>
-            <label>Message<br><textarea required name="message" rows="5" placeholder="Hello..." style="width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:12px"></textarea></label><br>
-            <button class="btn inverse" type="submit">Send</button>
+          <!-- 📧 DIRECT EMAIL FORM -->
+          <form id="contactForm"
+            action="mailto:studioartvika7@gmail.com?subject=Workshop Inquiry"
+            method="POST" enctype="text/plain">
+
+            <label>Name<br>
+              <input required name="name" placeholder="Your name"
+                style="width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:12px">
+            </label><br>
+
+            <label>Email<br>
+              <input required type="email" name="email" placeholder="you@example.com"
+                style="width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:12px">
+            </label><br>
+
+            <label>Message<br>
+              <textarea required name="message" rows="5" placeholder="Hello..."
+                style="width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:12px"></textarea>
+            </label><br>
+
+            <button class="btn inverse" type="submit" onclick="showNotice()">Send</button>
           </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // ✅ Mini bilgi balonu: modern toast mesajı
+    function showNotice() {
+      const note = document.createElement('div');
+      note.textContent = 'Opening your email app...';
+      Object.assign(note.style, {
+        position:'fixed',bottom:'30px',left:'50%',
+        transform:'translateX(-50%)',
+        background:'#111',color:'#fff',padding:'10px 20px',
+        borderRadius:'999px',fontFamily:'Inter',fontSize:'15px',
+        opacity:'0.95',zIndex:'9999',boxShadow:'0 6px 16px rgba(0,0,0,.2)'
+      });
+      document.body.append(note);
+      setTimeout(()=>note.remove(),3000
+
+
         </div>
       </div>
     </div>
