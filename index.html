@@ -216,69 +216,53 @@
 
           <p><strong>Phone</strong><br/>—</p>
 
-          <!-- 📧 DIRECT EMAIL FORM -->
-          <form id="contactForm"
-            action="mailto:studioartvika7@gmail.com?subject=Workshop Inquiry"
-            method="POST" enctype="text/plain">
+          <!-- 📧 DIRECT EMAIL (no form action, no warning) -->
+<form id="contactForm" onsubmit="return false;">
+  <label>Name<br>
+    <input id="f_name" required name="name" placeholder="Your name"
+      style="width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:12px">
+  </label><br>
 
-            <label>Name<br>
-              <input required name="name" placeholder="Your name"
-                style="width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:12px">
-            </label><br>
+  <label>Email<br>
+    <input id="f_email" required type="email" name="email" placeholder="you@example.com"
+      style="width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:12px">
+  </label><br>
 
-            <label>Email<br>
-              <input required type="email" name="email" placeholder="you@example.com"
-                style="width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:12px">
-            </label><br>
+  <label>Message<br>
+    <textarea id="f_message" required name="message" rows="5" placeholder="Hello..."
+      style="width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:12px"></textarea>
+  </label><br>
 
-            <label>Message<br>
-              <textarea required name="message" rows="5" placeholder="Hello..."
-                style="width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:12px"></textarea>
-            </label><br>
+  <button id="sendBtn" class="btn inverse" type="button" onclick="showNotice()">Send</button>
+</form>
 
-            <button class="btn inverse" type="submit" onclick="showNotice()">Send</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <script>
-    // ✅ Mini bilgi balonu: modern toast mesajı
-    function showNotice() {
-      const note = document.createElement('div');
-      note.textContent = 'Opening your email app...';
-      Object.assign(note.style, {
-        position:'fixed',bottom:'30px',left:'50%',
-        transform:'translateX(-50%)',
-        background:'#111',color:'#fff',padding:'10px 20px',
-        borderRadius:'999px',fontFamily:'Inter',fontSize:'15px',
-        opacity:'0.95',zIndex:'9999',boxShadow:'0 6px 16px rgba(0,0,0,.2)'
-      });
-      document.body.append(note);
-      setTimeout(()=>note.remove(),3000
-
-
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <footer class="footer">
-    <div class="container" style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap">
-      <small>© <span id="year"></span> Studio Artvika — All rights reserved.</small>
-      <small>Made with ♥ — Formspree</small>
-    </div>
-  </footer>
-
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-    document.querySelectorAll('a[href^="#"]').forEach(a=>{
-      a.addEventListener('click',e=>{
-        const id=a.getAttribute('href');
-        if(id.length>1){e.preventDefault();document.querySelector(id).scrollIntoView({behavior:'smooth'});}
-      });
+<script>
+  // Mini toast mesajı
+  function showNotice() {
+    const note = document.createElement('div');
+    note.textContent = 'Opening your email app...';
+    Object.assign(note.style, {
+      position:'fixed',bottom:'30px',left:'50%',transform:'translateX(-50%)',
+      background:'#111',color:'#fff',padding:'10px 20px',borderRadius:'999px',
+      fontFamily:'Inter',fontSize:'15px',opacity:'0.95',zIndex:'9999',
+      boxShadow:'0 6px 16px rgba(0,0,0,.2)'
     });
-  </script>
+    document.body.append(note);
+    setTimeout(()=>note.remove(),3000);
+  }
+
+  // Mailto linkini JS ile oluşturup aç
+  document.getElementById('sendBtn').addEventListener('click', () => {
+    const name = document.getElementById('f_name').value.trim();
+    const email = document.getElementById('f_email').value.trim();
+    const msg = document.getElementById('f_message').value.trim();
+    if(!name || !email || !msg) return; // native required da çalışır
+
+    const subject = encodeURIComponent('Workshop Inquiry');
+    const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${msg}`);
+    window.location.href = `mailto:studioartvika7@gmail.com?subject=${subject}&body=${body}`;
+  });
+</script>
+
 </body>
 </html>
