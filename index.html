@@ -134,7 +134,7 @@
     </div>
   </section>
 
-  <!-- CONTACT -->
+ <!-- CONTACT -->
 <section id="contact">
   <div class="container stack">
     <div class="kicker">Contact</div>
@@ -151,7 +151,7 @@
         <p><strong>Phone</strong><br>—</p>
 
         <!-- ✅ Formspree form – Studio Artvika -->
-        <form id="contactForm" action="https://formspree.io/f/artvika" method="POST">
+        <form id="contactForm" action="https://formspree.io/f/artvika" method="POST" novalidate>
           <label>
             Name<br>
             <input type="text" name="name" placeholder="Your name" required
@@ -167,12 +167,47 @@
             <textarea name="message" rows="4" placeholder="Hello..." required
               style="width:100%;padding:10px;border-radius:8px;border:1px solid var(--line);margin:5px 0"></textarea>
           </label><br>
-          <button type="submit" class="btn inverse">Send</button>
+          <button type="submit" class="btn inverse" id="sendBtn">Send</button>
+          <p id="formNote" style="font-size:14px;color:#6e6e6e;margin-top:6px"></p>
         </form>
       </div>
     </div>
   </div>
 </section>
+
+<script>
+const form = document.getElementById('contactForm');
+const note = document.getElementById('formNote');
+const btn  = document.getElementById('sendBtn');
+
+form.addEventListener('submit', async (e)=>{
+  e.preventDefault();
+  btn.disabled = true;
+  btn.textContent = 'Sending…';
+  note.style.color = '#6e6e6e';
+  note.textContent = 'Sending your message...';
+
+  const data = new FormData(form);
+  try {
+    const res = await fetch(form.action, { method:'POST', body:data, headers:{'Accept':'application/json'} });
+    if (res.ok) {
+      note.style.color = '#0b6f3a';
+      note.textContent = 'Thank you! Your message has been successfully sent.';
+      form.reset();
+    } else {
+      note.style.color = '#b0413e';
+      note.textContent = 'Something went wrong. Please try again later.';
+    }
+  } catch (err) {
+    note.style.color = '#b0413e';
+    note.textContent = 'Network error. Please check your connection.';
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Send';
+  }
+});
+</script>
+
 
 
   <footer class="footer">
